@@ -1,6 +1,7 @@
 package tp_class;
 
 import java.util.ArrayList;
+import java.util.Iterator;
 
 public class FigureUtil {
 	
@@ -116,6 +117,22 @@ public class FigureUtil {
 		}
 		
 		return figs;
+	}
+	
+	public static Figure getFigureEn(Point p, Dessin d)
+	{
+		ArrayList<Figure> figs = d.getFigures();
+		Iterator<Figure> it = figs.iterator();
+		while(it.hasNext() == true)
+		{
+			Figure f = it.next();
+			if(f.couvre(p))
+			{
+				return f;
+			}
+		}
+		
+		return null;
 	}
 	
 	private static Point getRandomPoint()
