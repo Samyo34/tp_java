@@ -80,9 +80,14 @@ public class Segment extends Figure{
 	}
 
 	@Override
-	protected boolean couvre(Point p) {
+	public boolean couvre(Point p) {
+		int val = 1;
+		if((this.getPoints().get(1).getY()-this.getPoints().get(0).getY()) > 0)
+		{
+			val = (this.getPoints().get(1).getY()-this.getPoints().get(0).getY());
+		}
 		return (((this.getPoints().get(1).getX()-this.getPoints().get(0).getX())/
-				(this.getPoints().get(1).getY()-this.getPoints().get(0).getY()))==
+				(val))==
 				((p.getX()-this.getPoints().get(0).getX())/
 				(p.getY()-this.getPoints().get(0).getY())) &&
 				(p.getX()<=this.getPoints().get(1).getX() && p.getX()<=this.getPoints().get(0).getX()));

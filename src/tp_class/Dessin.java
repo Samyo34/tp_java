@@ -16,6 +16,11 @@ public class Dessin {
 		allFigs.add(fig);
 	}
 	
+	public void addAll(ArrayList<Figure> figs)
+	{
+		allFigs = figs;
+	}
+	
 	public ArrayList<Figure> getFigures()
 	{
 		return new ArrayList<Figure>(this.allFigs);

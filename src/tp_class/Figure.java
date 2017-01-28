@@ -36,7 +36,7 @@ public abstract class Figure {
 		
 	public abstract String toString();
 	
-	protected abstract boolean couvre(Point p);
+	public abstract boolean couvre(Point p);
 	
 	public void affiche()
 	{

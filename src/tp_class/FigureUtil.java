@@ -135,7 +135,7 @@ public class FigureUtil {
 		return null;
 	}
 	
-	private static Point getRandomPoint()
+	public static Point getRandomPoint()
 	{
 		
 		return new Point(getRandomNumber(),getRandomNumber());
