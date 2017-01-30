@@ -4,7 +4,9 @@ import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Collections;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 public class FigureUtil {
 	
@@ -122,18 +124,25 @@ public class FigureUtil {
 	
 	public static Optional<Figure> getFigureEn(Point p, Dessin d)
 	{
-		Collection<Figure> figs = d.getFigures();
-		Iterator<Figure> it = figs.iterator();
-		while(it.hasNext() == true)
-		{
-			Figure f = it.next();
-			if(f.couvre(p))
-			{
-				return Optional.of(f);
-			}
-		}
 		
-		return Optional.empty();
+		return d.getFigures()
+			.stream()
+			.filter(f -> f.couvre(p))
+			.findFirst();
+
+		
+//		Collection<Figure> figs = d.getFigures();
+//		Iterator<Figure> it = figs.iterator();
+//		while(it.hasNext() == true)
+//		{
+//			Figure f = it.next();
+//			if(f.couvre(p))
+//			{
+//				return Optional.of(f);
+//			}
+//		}
+//		
+//		return Optional.empty();
 	}
 	
 	public static Point getRandomPoint()
@@ -144,24 +153,40 @@ public class FigureUtil {
 
 	public static ArrayList<Figure> trieProcheOrigin(Dessin d)
 	{
-		ArrayList<Figure> figs = (ArrayList<Figure>)d.getFigures();
-		Collections.sort(figs);
-		return figs;
+		
+		return (ArrayList<Figure>)d.getFigures()
+				.stream()
+				.sorted()
+				.collect(Collectors.toList());
+		
+//		ArrayList<Figure> figs = (ArrayList<Figure>)d.getFigures();
+//		Collections.sort(figs);
+//		return figs;
 	}
 
 	public static ArrayList<Surfacable> trieDominant(Dessin d)
 	{
-		ArrayList<Figure> figs = (ArrayList<Figure>)d.getFigures();
-		ArrayList<Surfacable> res = new ArrayList<Surfacable>();
-		for (Figure figure : figs) {
-			if(figure instanceof Surfacable)
-			{
-				res.add((Surfacable)figure);
-			}
-		}
+		List<Surfacable> list = d.getFigures().stream()
+		.filter(f -> f instanceof Surfacable)
+		.map(f->(Surfacable)f)
+		.sorted((f1,f2)->(int)(f1.surface()-f2.surface()))
+		.collect(Collectors.toList());
 		
-		Collections.sort(res, (f1,f2)->(int)(f1.surface()-f2.surface()));
-		return res;
+		return (ArrayList<Surfacable>)list;
+		
+		
+		
+//		ArrayList<Figure> figs = (ArrayList<Figure>)d.getFigures();
+//		ArrayList<Surfacable> res = new ArrayList<Surfacable>();
+//		for (Figure figure : figs) {
+//			if(figure instanceof Surfacable)
+//			{
+//				res.add((Surfacable)figure);
+//			}
+//		}
+//		
+//		Collections.sort(res, (f1,f2)->(int)(f1.surface()-f2.surface()));
+//		return res;
 	}
 	
 	private static int getRandomNumber()
