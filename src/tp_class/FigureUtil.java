@@ -3,6 +3,7 @@ package tp_class;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Iterator;
+import java.util.Optional;
 
 public class FigureUtil {
 	
@@ -120,7 +121,7 @@ public class FigureUtil {
 		return figs;
 	}
 	
-	public static Figure getFigureEn(Point p, Dessin d)
+	public static Optional<Figure> getFigureEn(Point p, Dessin d)
 	{
 		Collection<Figure> figs = d.getFigures();
 		Iterator<Figure> it = figs.iterator();
@@ -129,11 +130,11 @@ public class FigureUtil {
 			Figure f = it.next();
 			if(f.couvre(p))
 			{
-				return f;
+				return Optional.of(f);
 			}
 		}
 		
-		return null;
+		return Optional.empty();
 	}
 	
 	public static Point getRandomPoint()

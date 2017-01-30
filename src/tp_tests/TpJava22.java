@@ -33,7 +33,14 @@ public class TpJava22 {
 		}
 		
 		System.out.println("Figure en : " + p);
-		FigureUtil.getFigureEn(p, d).affiche();
+		if(FigureUtil.getFigureEn(p, d).isPresent())
+		{
+			FigureUtil.getFigureEn(p, d).get().affiche();
+		}
+		else
+		{
+			System.out.println("Pas de figure en "+p);
+		}
 
 	}
 
