@@ -126,7 +126,7 @@ public class Rectangle extends Figure implements Surfacable{
 	 */
 	@Override
 	public boolean couvre(Point p) {
-		ArrayList<Point> pts = this.getAllPoints();
+		ArrayList<Point> pts = (ArrayList<Point>) this.getAllPoints();
 		if((p.getX() > pts.get(0).getX() && p.getX() < pts.get(1).getX()) &&
 			 (p.getY() > pts.get(0).getY() && p.getY() < pts.get(3).getY())	)
 		{

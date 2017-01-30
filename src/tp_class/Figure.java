@@ -24,7 +24,7 @@ public abstract class Figure {
 		this.source = p;
 	}
 	
-	public ArrayList<Point> getAllPoints()
+	public Collection<Point> getAllPoints()
 	{
 		return new ArrayList<Point>(this.points);
 	}

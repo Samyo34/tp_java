@@ -63,10 +63,10 @@ public class FigureUtil {
 		}
 	}
 	
-	public static ArrayList<Point> getPointsByArray(Figure[] figs)
+	public static Collection<Point> getPointsByArray(Figure[] figs)
 	{
 		
-		ArrayList<Point> pts = new ArrayList<Point>();
+		Collection<Point> pts = new ArrayList<Point>();
 		for(int i = 0; i< figs.length;i++)
 		{
 			pts.addAll(new ArrayList<Point>(figs[i].getAllPoints()));
@@ -76,7 +76,7 @@ public class FigureUtil {
 
 	}
 	
-	public static ArrayList<Point> getPoints(Figure... figs)
+	public static Collection<Point> getPoints(Figure... figs)
 	{
 		return getPointsByArray(figs);		
 	}
