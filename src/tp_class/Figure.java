@@ -3,7 +3,7 @@ package tp_class;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public abstract class Figure {
+public abstract class Figure implements Comparable<Figure>{
 	
 	private Point source;
 	private ArrayList<Point> points; // pour le tp 21
@@ -38,6 +38,35 @@ public abstract class Figure {
 	public abstract String toString();
 	
 	public abstract boolean couvre(Point p);
+	
+	public double distanceOrigine()
+	{
+		Point p = new Point(); // init à INIT_X INIT_Y
+		double minDist = p.dist(this.points.get(0));
+		for (Point point : points) {
+			if(p.dist(point) < minDist)
+			{
+				minDist = p.dist(point);
+			}
+		}
+		return minDist;
+	}
+	
+	@Override
+	public int compareTo(Figure o) {
+		if(this.distanceOrigine() > o.distanceOrigine())
+		{
+			return 1;
+		}
+		else if(this.distanceOrigine() == o.distanceOrigine())
+		{
+			return 0;
+		}
+		else
+		{
+			return -1;
+		}
+	}
 	
 	public void affiche()
 	{

@@ -2,11 +2,11 @@ package tp_class;
 
 import java.util.ArrayList;
 import java.util.Collection;
+import java.util.Collections;
 import java.util.Iterator;
 import java.util.Optional;
 
 public class FigureUtil {
-	
 	
 	public static Rond getRandomRond()
 	{
@@ -109,7 +109,6 @@ public class FigureUtil {
 		return pts;
 	}
 	
-
 	public static Collection<Figure> genere(int size)
 	{
 		Collection<Figure> figs = new ArrayList<Figure>();
@@ -143,7 +142,28 @@ public class FigureUtil {
 		return new Point(getRandomNumber(),getRandomNumber());
 	}
 
+	public static Collection<Figure> trieProcheOrigin(Dessin d)
+	{
+		ArrayList<Figure> figs = (ArrayList<Figure>)d.getFigures();
+		Collections.sort(figs);
+		return figs;
+	}
 
+	public static Collection<Surfacable> trieDominant(Dessin d)
+	{
+		ArrayList<Figure> figs = (ArrayList<Figure>)d.getFigures();
+		ArrayList<Surfacable> res = new ArrayList<Surfacable>();
+		for (Figure figure : figs) {
+			if(figure instanceof Surfacable)
+			{
+				res.add((Surfacable)figure);
+			}
+		}
+		
+		Collections.sort(res, (f1,f2)->(int)(f1.surface()-f2.surface()));
+		return res;
+	}
+	
 	private static int getRandomNumber()
 	{
 		return (int)(Math.random()*100);

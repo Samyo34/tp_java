@@ -33,7 +33,6 @@ public class Rectangle extends Figure implements Surfacable{
 		
 	}
 
-
 	public Point getPointHautDroite() {
 		return pointHautDroite;
 	}
@@ -85,12 +84,10 @@ public class Rectangle extends Figure implements Surfacable{
 		return (double) (this.largeur * this.longueur);
 	}
 
-
 	@Override
 	protected String getType() {
 		return "RECT";
 	}
-
 
 	@Override
 	protected Collection<Point> getPoints() {
@@ -105,7 +102,6 @@ public class Rectangle extends Figure implements Surfacable{
 //		points[3] = new Point(this.pointBasGauche);
 		return points;
 	}
-
 
 	@Override
 	protected Point[] getArrayPoints() {
@@ -137,6 +133,21 @@ public class Rectangle extends Figure implements Surfacable{
 			return false;
 		}
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Figure)
+		{
+			return ((Figure)o).getAllPoints().containsAll(this.getAllPoints());
+			
+		}
+		else
+		{
+			return false;
+		}
+	}
+
+	
 	
 
 }

@@ -53,6 +53,16 @@ public class Point {
 		System.out.println(this.toString());
 	}
 	
+	public double dist(Point p)
+	{
+		double xAB =  this.getX() - p.getX();
+		double xAB2 = xAB * xAB;
+		double yAB = this.getY() - p.getY();
+		double yAB2 = yAB * yAB;
+		double dist = Math.sqrt(xAB2 + yAB2); 
+		return dist;
+	}
+	
 	@Override
 	public boolean equals(Object o)
 	{
@@ -67,5 +77,7 @@ public class Point {
 		}
 		
 	}
+
+
 
 }

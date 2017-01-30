@@ -57,5 +57,24 @@ public class Rond extends Figure implements Surfacable{
 		return (Math.sqrt((Math.pow(p.getX() - pts.get(0).getX(),2))+
 						Math.pow(p.getY() - pts.get(0).getY(), 2))<this.getRay());
 	}
+
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Figure)
+		{
+			if(o instanceof Rond)
+			{
+				return (((Rond) o).getSource().equals(this.getSource()) && ((Rond)o).getRay() == this.getRay());
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
+	}
 	
 }

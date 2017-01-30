@@ -1,6 +1,7 @@
 package tp_class;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Segment extends Figure{
 	
@@ -61,7 +62,7 @@ public class Segment extends Figure{
 	}
 
 	@Override
-	protected ArrayList<Point> getPoints() {
+	protected Collection<Point> getPoints() {
 		ArrayList<Point> points = new ArrayList<Point>();
 		points.add(new Point(this.getSource()));
 		points.add(new Point(this.fin));
@@ -81,16 +82,36 @@ public class Segment extends Figure{
 
 	@Override
 	public boolean couvre(Point p) {
+		ArrayList<Point> pts = (ArrayList<Point>) this.getAllPoints();
 		int val = 1;
-		if((this.getPoints().get(1).getY()-this.getPoints().get(0).getY()) > 0)
+		if(pts.get(1).getY()-pts.get(0).getY() > 0)
 		{
-			val = (this.getPoints().get(1).getY()-this.getPoints().get(0).getY());
+			val = (pts.get(1).getY()-pts.get(0).getY());
 		}
-		return (((this.getPoints().get(1).getX()-this.getPoints().get(0).getX())/
+		return (((pts.get(1).getX()-pts.get(0).getX())/
 				(val))==
-				((p.getX()-this.getPoints().get(0).getX())/
-				(p.getY()-this.getPoints().get(0).getY())) &&
-				(p.getX()<=this.getPoints().get(1).getX() && p.getX()<=this.getPoints().get(0).getX()));
+				((p.getX()-pts.get(0).getX())/
+				(p.getY()-pts.get(0).getY())) &&
+				(p.getX()<=pts.get(1).getX() && p.getX()<=pts.get(0).getX()));
+	}
+
+	@Override
+	public boolean equals(Object o) {
+		if(o instanceof Figure)
+		{
+			if(o instanceof Segment)
+			{
+				return (((Segment)o).getSource().equals(this.getSource()) && ((Segment)o).getFin().equals(this.getFin()));
+			}
+			else
+			{
+				return false;
+			}
+		}
+		else
+		{
+			return false;
+		}
 	}
 
 }
