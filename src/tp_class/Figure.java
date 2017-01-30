@@ -1,6 +1,7 @@
 package tp_class;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public abstract class Figure {
 	
@@ -30,7 +31,7 @@ public abstract class Figure {
 
 	protected abstract String getType();
 
-	protected abstract ArrayList<Point> getPoints();
+	protected abstract Collection<Point> getPoints();
 	
 	protected abstract Point[] getArrayPoints();
 		

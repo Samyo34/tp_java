@@ -1,6 +1,7 @@
 package tp_class;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Dessin {
 	
@@ -16,14 +17,14 @@ public class Dessin {
 		allFigs.add(fig);
 	}
 	
-	public void addAll(ArrayList<Figure> figs)
+	public void addAll(Collection<Figure> figs)
 	{
-		allFigs = figs;
+		allFigs =  new ArrayList<Figure>(figs);
 	}
 	
-	public ArrayList<Figure> getFigures()
+	public Collection<Figure> getFigures()
 	{
-		return new ArrayList<Figure>(this.allFigs);
+		return this.allFigs;
 	}
 
 }

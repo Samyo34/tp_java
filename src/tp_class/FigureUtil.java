@@ -1,6 +1,7 @@
 package tp_class;
 
 import java.util.ArrayList;
+import java.util.Collection;
 import java.util.Iterator;
 
 public class FigureUtil {
@@ -108,9 +109,9 @@ public class FigureUtil {
 	}
 	
 
-	public static ArrayList<Figure> genere(int size)
+	public static Collection<Figure> genere(int size)
 	{
-		ArrayList<Figure> figs = new ArrayList<Figure>();
+		Collection<Figure> figs = new ArrayList<Figure>();
 		for(int i = 0; i< size;i++)
 		{
 			figs.add(getRandomFigure());
@@ -121,7 +122,7 @@ public class FigureUtil {
 	
 	public static Figure getFigureEn(Point p, Dessin d)
 	{
-		ArrayList<Figure> figs = d.getFigures();
+		Collection<Figure> figs = d.getFigures();
 		Iterator<Figure> it = figs.iterator();
 		while(it.hasNext() == true)
 		{

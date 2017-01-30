@@ -1,6 +1,7 @@
 package tp_class;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Rectangle extends Figure implements Surfacable{
 	
@@ -92,8 +93,8 @@ public class Rectangle extends Figure implements Surfacable{
 
 
 	@Override
-	protected ArrayList<Point> getPoints() {
-		ArrayList<Point> points = new ArrayList<Point>();
+	protected Collection<Point> getPoints() {
+		Collection<Point> points = new ArrayList<Point>();
 		points.add(new Point(this.getSource()));
 		points.add(new Point(this.pointHautDroite));
 		points.add(new Point(this.pointBasDroit));

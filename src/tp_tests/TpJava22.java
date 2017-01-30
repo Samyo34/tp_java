@@ -1,6 +1,7 @@
 package tp_tests;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 import tp_class.Dessin;
 import tp_class.Figure;
@@ -10,7 +11,7 @@ import tp_class.Point;
 public class TpJava22 {
 
 	public static void main(String[] args) {
-		ArrayList<Figure> figs = new ArrayList<Figure>();
+		Collection<Figure> figs = new ArrayList<Figure>();
 		figs = FigureUtil.genere(10);
 		Dessin d = new Dessin();
 		
