@@ -1,6 +1,7 @@
 package tp_class;
 
 import java.util.ArrayList;
+import java.util.Collection;
 
 public class Rond extends Figure implements Surfacable{
 	
@@ -37,8 +38,8 @@ public class Rond extends Figure implements Surfacable{
 	}
 
 	@Override
-	protected ArrayList<Point> getPoints() {
-		ArrayList<Point> pts = new ArrayList<Point>();
+	protected Collection<Point> getPoints() {
+		Collection<Point> pts = new ArrayList<Point>();
 		pts.add(new Point(this.getSource()));
 		return pts;
 	}
@@ -52,8 +53,9 @@ public class Rond extends Figure implements Surfacable{
 
 	@Override
 	public boolean couvre(Point p) {
-		return (Math.sqrt((Math.pow(p.getX() - this.getPoints().get(0).getX(),2))+
-						Math.pow(p.getY() - this.getPoints().get(0).getY(), 2))<this.getRay());
+		ArrayList<Point> pts = (ArrayList<Point>)this.getPoints();
+		return (Math.sqrt((Math.pow(p.getX() - pts.get(0).getX(),2))+
+						Math.pow(p.getY() - pts.get(0).getY(), 2))<this.getRay());
 	}
 	
 }
