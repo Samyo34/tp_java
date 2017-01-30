@@ -142,14 +142,14 @@ public class FigureUtil {
 		return new Point(getRandomNumber(),getRandomNumber());
 	}
 
-	public static Collection<Figure> trieProcheOrigin(Dessin d)
+	public static ArrayList<Figure> trieProcheOrigin(Dessin d)
 	{
 		ArrayList<Figure> figs = (ArrayList<Figure>)d.getFigures();
 		Collections.sort(figs);
 		return figs;
 	}
 
-	public static Collection<Surfacable> trieDominant(Dessin d)
+	public static ArrayList<Surfacable> trieDominant(Dessin d)
 	{
 		ArrayList<Figure> figs = (ArrayList<Figure>)d.getFigures();
 		ArrayList<Surfacable> res = new ArrayList<Surfacable>();

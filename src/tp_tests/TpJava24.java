@@ -27,13 +27,13 @@ public class TpJava24 {
 		Dessin d = new Dessin();
 		d.addAll(figs);
 		
-		figs = (ArrayList<Figure>)FigureUtil.trieProcheOrigin(d);
+		figs = FigureUtil.trieProcheOrigin(d);
 		for (Figure figure : figs) {
 			System.out.println(figure+ ","+figure.distanceOrigine());
 		}
 		
 		System.out.println("TRIE DOMINANT : ");
-		ArrayList<Surfacable> figSur = (ArrayList<Surfacable>)FigureUtil.trieDominant(d);
+		ArrayList<Surfacable> figSur = FigureUtil.trieDominant(d);
 		for (Surfacable surfacable : figSur) {
 			System.out.println(surfacable);
 		}
