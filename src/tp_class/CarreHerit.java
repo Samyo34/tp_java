@@ -2,9 +2,9 @@ package tp_class;
 
 public class CarreHerit extends Rectangle{
 	
-	public CarreHerit(Point p, int range)
+	public CarreHerit(Point p, int range,Couleur r)
 	{
-		super(p,range,range);
+		super(p,range,range,r);
 	}
 	
 	@Override

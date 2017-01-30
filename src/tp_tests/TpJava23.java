@@ -2,6 +2,7 @@ package tp_tests;
 
 
 
+import tp_class.Couleur;
 import tp_class.Figure;
 import tp_class.FigureUtil;
 import tp_class.Point;
@@ -29,8 +30,8 @@ public class TpJava23 {
 		p = FigureUtil.getRandomPoint();
 		
 		
-		f1 = new Rectangle(p, 10, 5);
-		f2 = new Rectangle(p, 10, 5);
+		f1 = new Rectangle(p, 10, 5,Couleur.bleu);
+		f2 = new Rectangle(p, 10, 5,Couleur.bleu);
 		
 		System.out.println(f1 + "|" + f2 + " equals ? "+f1.equals(f2));
 		

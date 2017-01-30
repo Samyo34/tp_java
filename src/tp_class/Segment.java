@@ -9,9 +9,9 @@ public class Segment extends Figure{
 	private int longueur;
 	private boolean horiztontal;
 	
-	public Segment(Point debut, int longueur, boolean horizontal)
+	public Segment(Point debut, int longueur, boolean horizontal, Couleur c)
 	{
-		super(debut);
+		super(debut,c);
 		this.horiztontal = horizontal;
 		this.longueur = longueur;
 		if(horizontal)
@@ -53,7 +53,7 @@ public class Segment extends Figure{
 	
 	public String toString()
 	{
-		return "["+this.getType()+" "+this.getSource().toString()+"=>"+this.fin.toString()+"]";
+		return "["+this.getType()+" "+this.getCouleur()+ " "+this.getSource().toString()+"=>"+this.fin.toString()+"]";
 	}
 
 	@Override
@@ -101,7 +101,7 @@ public class Segment extends Figure{
 		{
 			if(o instanceof Segment)
 			{
-				return (((Segment)o).getSource().equals(this.getSource()) && ((Segment)o).getFin().equals(this.getFin()));
+				return ((((Segment)o).getSource().equals(this.getSource()) && ((Segment)o).getFin().equals(this.getFin())) && ((Figure)o).getCouleur() == this.getCouleur());
 			}
 			else
 			{

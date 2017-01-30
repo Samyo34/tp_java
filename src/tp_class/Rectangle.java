@@ -19,9 +19,9 @@ public class Rectangle extends Figure implements Surfacable{
 	 * @param longueur
 	 * @param largeur
 	 */
-	public Rectangle(Point p, int longueur, int largeur)
+	public Rectangle(Point p, int longueur, int largeur, Couleur r)
 	{
-		super(p);
+		super(p,r);
 		this.pointHautDroite = new Point(p.getX()+longueur,p.getY());
 		this.addPoint(this.pointHautDroite);
 		this.pointBasGauche = new Point(p.getX(),p.getY()+largeur);
@@ -76,7 +76,7 @@ public class Rectangle extends Figure implements Surfacable{
 	@Override
 	public String toString()
 	{
-		return "["+this.getType()+" "+this.getSource().toString()+this.pointHautDroite.toString()+this.pointBasDroit.toString()+this.pointBasGauche.toString()+","+this.getLargeur()+","+this.getLongueur()+","+this.surface()+"]";
+		return "["+this.getType()+" "+this.getCouleur()+" "+this.getSource().toString()+this.pointHautDroite.toString()+this.pointBasDroit.toString()+this.pointBasGauche.toString()+","+this.getLargeur()+","+this.getLongueur()+","+this.surface()+"]";
 	}
 	
 	public double surface()
@@ -138,7 +138,7 @@ public class Rectangle extends Figure implements Surfacable{
 	public boolean equals(Object o) {
 		if(o instanceof Figure)
 		{
-			return ((Figure)o).getAllPoints().containsAll(this.getAllPoints());
+			return (((Figure)o).getAllPoints().containsAll(this.getAllPoints()) && this.getCouleur() == ((Figure)o).getCouleur());
 			
 		}
 		else

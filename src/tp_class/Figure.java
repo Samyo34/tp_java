@@ -9,11 +9,37 @@ public abstract class Figure implements Comparable<Figure>{
 	private ArrayList<Point> points; // pour le tp 21
 //	private String type = "FIG";
 	
+	private Couleur couleur;
+	
+	public Couleur getCouleur()
+	{
+		return this.couleur;
+	}
+	
+	public Figure()
+	{
+		this.couleur = Couleur.getCouleurDefaut();
+	}
+	
+	public Figure(Couleur c)
+	{
+		this.couleur = c;
+	}
+	
+	
 	public Figure(Point p)
 	{
 		points = new ArrayList<Point>();
 		this.source = new Point(p.getX(),p.getY());
 		points.add(new Point(p));
+	}
+	
+	public Figure(Point p, Couleur c)
+	{
+		points = new ArrayList<Point>();
+		this.source = new Point(p.getX(),p.getY());
+		points.add(new Point(p));
+		this.couleur = c;
 	}
 
 	protected Point getSource() {

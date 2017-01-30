@@ -12,6 +12,11 @@ public class Rond extends Figure implements Surfacable{
 		super(p);
 		this.ray = ray;
 	}
+	
+	public Rond(Point p, int ray, Couleur c){
+		super(p,c);
+		this.ray = ray;
+	}
 
 	public int getRay() {
 		return ray;
@@ -24,7 +29,7 @@ public class Rond extends Figure implements Surfacable{
 	@Override
 	public String toString()
 	{
-		return "["+this.getType()+" "+this.getSource().toString()+","+this.surface()+"]";
+		return "["+this.getType()+" "+this.getCouleur()+" "+this.getSource().toString()+","+this.surface()+"]";
 	}
 	
 	public double surface()
@@ -64,7 +69,7 @@ public class Rond extends Figure implements Surfacable{
 		{
 			if(o instanceof Rond)
 			{
-				return (((Rond) o).getSource().equals(this.getSource()) && ((Rond)o).getRay() == this.getRay());
+				return ((((Rond) o).getSource().equals(this.getSource()) && ((Rond)o).getRay() == this.getRay()) && this.getCouleur() == ((Figure)o).getCouleur());
 			}
 			else
 			{

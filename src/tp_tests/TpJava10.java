@@ -1,5 +1,6 @@
 package tp_tests;
 
+import tp_class.Couleur;
 import tp_class.Point;
 import tp_class.Rectangle;
 import tp_class.Rond;
@@ -20,7 +21,7 @@ public class TpJava10 {
 		r.affiche();
 		
 		System.out.println("Création d'un rectangle rec ayant p comme point supérieur gauche et de longueur 10 et largeur 8");
-		Rectangle rec = new Rectangle(p,10,8);
+		Rectangle rec = new Rectangle(p,10,8,Couleur.bleu);
 		rec.affiche();
 		
 		

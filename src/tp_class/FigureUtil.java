@@ -2,8 +2,6 @@ package tp_class;
 
 import java.util.ArrayList;
 import java.util.Collection;
-import java.util.Collections;
-import java.util.Iterator;
 import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
@@ -13,17 +11,17 @@ public class FigureUtil {
 	public static Rond getRandomRond()
 	{
 		
-		return new Rond(getRandomPoint(),getRandomNumber());
+		return new Rond(getRandomPoint(),getRandomNumber(),getRandomCouleur());
 	}
 	
 	public static Rectangle getRandomRect()
 	{
-		return new Rectangle(getRandomPoint(),getRandomNumber(),getRandomNumber());
+		return new Rectangle(getRandomPoint(),getRandomNumber(),getRandomNumber(),getRandomCouleur());
 	}
 	
 	public static CarreHerit getRandomCarreHerit()
 	{
-		return new CarreHerit(getRandomPoint(),getRandomNumber());
+		return new CarreHerit(getRandomPoint(),getRandomNumber(),getRandomCouleur());
 	}
 	
 	public static Carre getRandomCarre()
@@ -33,7 +31,7 @@ public class FigureUtil {
 	
 	public static Segment getRandomSegment()
 	{
-		return new Segment(getRandomPoint(),getRandomNumber(),getRandomBool());
+		return new Segment(getRandomPoint(),getRandomNumber(),getRandomBool(),getRandomCouleur());
 	}
 	
 	public static Surfacable getRandomSurfacable()
@@ -194,6 +192,11 @@ public class FigureUtil {
 		return (int)(Math.random()*100);
 	}
 	
+	private static int getRandomValue(int min, int max)
+	{
+		return (int)(Math.random()*(max - min));
+	}
+	
 	private static boolean getRandomBool()
 	{
 		int value = (int)(Math.random()*100);
@@ -207,4 +210,10 @@ public class FigureUtil {
 		}
 	}
 	
+	private static Couleur getRandomCouleur()
+	{
+		int max = Couleur.values().length;
+		int index = getRandomValue(0,max-1);
+		return Couleur.values()[index];
+	}
 }
