@@ -5,6 +5,10 @@ import java.util.Collection;
 
 public class Segment extends Figure{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -2325389349239712618L;
 	private Point fin;
 	private int longueur;
 	private boolean horiztontal;
@@ -82,17 +86,19 @@ public class Segment extends Figure{
 
 	@Override
 	public boolean couvre(Point p) {
-		ArrayList<Point> pts = (ArrayList<Point>) this.getAllPoints();
-		int val = 1;
-		if(pts.get(1).getY()-pts.get(0).getY() > 0)
-		{
-			val = (pts.get(1).getY()-pts.get(0).getY());
+		if(p.getX() < getSource().getX()){
+			return false;
 		}
-		return (((pts.get(1).getX()-pts.get(0).getX())/
-				(val))==
-				((p.getX()-pts.get(0).getX())/
-				(p.getY()-pts.get(0).getY())) &&
-				(p.getX()<=pts.get(1).getX() && p.getX()<=pts.get(0).getX()));
+		if(p.getX() > getFin().getX()){
+			return false;
+		}
+		if(p.getY() < getSource().getY()){
+			return false;
+		}
+		if(p.getY() > getFin().getY()){
+			return false;
+		}
+return true;
 	}
 
 	@Override

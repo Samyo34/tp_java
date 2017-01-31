@@ -5,6 +5,10 @@ import java.util.Collection;
 
 public class Rond extends Figure implements Surfacable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 7892695775479985012L;
 	//Point point = null;
 	int ray = 0;
 	

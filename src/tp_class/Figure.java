@@ -1,10 +1,15 @@
 package tp_class;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public abstract class Figure implements Comparable<Figure>{
+public abstract class Figure implements Comparable<Figure>, Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -4312119445289262446L;
 	private Point source;
 	private ArrayList<Point> points; // pour le tp 21
 //	private String type = "FIG";
@@ -93,6 +98,7 @@ public abstract class Figure implements Comparable<Figure>{
 			return -1;
 		}
 	}
+
 	
 	public void affiche()
 	{

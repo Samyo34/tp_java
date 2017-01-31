@@ -1,5 +1,14 @@
 package tp_class;
 
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.ObjectInputStream;
+import java.io.ObjectOutputStream;
+import java.io.PrintWriter;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
@@ -185,6 +194,79 @@ public class FigureUtil {
 //		
 //		Collections.sort(res, (f1,f2)->(int)(f1.surface()-f2.surface()));
 //		return res;
+	}
+	
+	public static void imprime(Dessin d) throws IOException, ImpressionHorsLimiteException
+	{
+		
+		Optional<Point> o =  d.getFigures().stream()
+			.flatMap(f -> f.getAllPoints().stream())
+			.filter(p -> p.getX()<0 || p.getX() > 200 || p.getY()<0 || p.getY()>200)
+			.findAny();
+		
+		if(o.isPresent())
+		{
+			throw new ImpressionHorsLimiteException();
+		}
+		
+		File file = new File ("dessin.txt");
+		PrintWriter writer = new PrintWriter ( new FileWriter (file)) ;
+		d.getFigures().stream()
+		.forEach(fig -> writer.println(fig));
+
+		for(int i =0; i<100;i++)
+		{
+			writer.print('=');
+		}
+		writer.println();
+		for (int i = -100; i<270;i++)
+		{
+			for(int j = -100; j<270;j++)
+			{
+				Point p = new Point(i,j);
+				if(getFigureEn(p, d).isPresent())
+				{
+					writer.print(getFigureEn(p, d).get().getCouleur().getCode());
+				}
+				else
+				{
+					writer.print(' ');
+				}
+			}
+			writer.println();
+				
+		}
+		
+		
+		writer.close();
+		System.out.println("File created at : "+file.getAbsolutePath());
+	}
+
+	public static void save(Dessin d) throws FileNotFoundException, IOException
+	{
+		File file = new File ("save.bin");
+		ObjectOutputStream writer = new ObjectOutputStream ( new FileOutputStream(file)) ;
+		writer.writeObject(d);
+		
+		writer.close();
+	}
+	
+	public static Dessin load(String fileName) throws IOException, ClassNotFoundException
+	{
+		System.out.println("Loading data from : "+fileName);
+		Dessin d;
+		try
+		{
+			ObjectInputStream in = new ObjectInputStream(new FileInputStream(fileName));
+			d = (Dessin)in.readObject();
+			in.close();
+		}
+		catch (FileNotFoundException e)
+		{
+			d = new Dessin();
+		}
+		System.out.println("Data loaded");
+		return d;
 	}
 	
 	private static int getRandomNumber()

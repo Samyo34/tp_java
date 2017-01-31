@@ -1,10 +1,15 @@
 package tp_class;
 
+import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.Collection;
 
-public class Dessin {
+public class Dessin implements Serializable {
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -770704200338356531L;
 	private ArrayList<Figure> allFigs; 
 	
 	public Dessin()

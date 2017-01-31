@@ -1,7 +1,13 @@
 package tp_class;
 
-public class Point {
+import java.io.Serializable;
+
+public class Point implements Serializable{
 	
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	private final int INIT_X = 25;
 	private final int INIT_Y = 25;
 	
